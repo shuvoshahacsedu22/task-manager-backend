@@ -14,7 +14,7 @@ mongoose.connect(dbConfig.url, {
     useNewUrlParser: true
 }).then(() => {
     console.log("Databse Connected Successfully!!");    
-    console.log(process.env);
+    //console.log(process.env);
 }).catch(err => {
     console.log('Could not connect to the database', err);
     process.exit();
