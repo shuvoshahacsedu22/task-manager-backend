@@ -1,7 +1,9 @@
 require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
+app.use(cors({origin:"*"}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 const dbConfig = require('./config/database.config.js');
@@ -20,10 +22,6 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
-app.use(function(req, res) {
-    res.header("Access-Control-Allow-Origin", "https://task-manager-pi-nine.vercel.app/"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  });
 
 app.use('/task',TaskRoute)
 app.get('/', (req, res) => {
