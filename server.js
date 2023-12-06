@@ -20,6 +20,12 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
+app.use(function(req, res) {
+    res.header("Access-Control-Allow-Origin", "https://task-manager-pi-nine.vercel.app/"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 app.use('/task',TaskRoute)
 app.get('/', (req, res) => {
     res.json({"message": "Hello Crud Node Express"});
