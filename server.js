@@ -6,7 +6,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
-const TaskRoute = require('./routes/Task');
+const TaskRoute = require('./routes/task');
 const port = process.env.PORT || 3000;
 mongoose.Promise = global.Promise;
 
